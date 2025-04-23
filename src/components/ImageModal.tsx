@@ -48,6 +48,7 @@ export default function ImageModal({
           onClick={(e) => e.stopPropagation()}
         >
           <Image
+            className="modal-image"
             src={src}
             alt="Expanded"
             width={900}
@@ -56,29 +57,32 @@ export default function ImageModal({
           />
 
           <div className="modal-buttons">
-            <button onClick={onClose}>x</button>
-            <a href={src} download target="_blank" rel="noopener noreferrer">
-              download
-            </a>
-            <a href={src} target="_blank" rel="noopener noreferrer">
-              open
-            </a>
-            <button
-              onClick={() => setSelectedIndex(selectedIndex - 1)}
-              disabled={selectedIndex === 0}
-              style={{ opacity: selectedIndex === 0 ? 0.5 : 1 }}
-            >
-              prev
-            </button>
-            <button
-              onClick={() => setSelectedIndex(selectedIndex + 1)}
-              disabled={selectedIndex === images.length - 1}
-              style={{
-                opacity: selectedIndex === images.length - 1 ? 0.5 : 1,
-              }}
-            >
-              next
-            </button>
+            <div className="option-buttons">
+              <button className="close" onClick={onClose}>x</button>
+              <a className="download" href={src} download target="_blank" rel="noopener noreferrer">
+                download
+              </a>
+              <a className="open-tab" href={src} target="_blank" rel="noopener noreferrer">
+                open
+              </a>
+
+              <button className="prev"
+                onClick={() => setSelectedIndex(selectedIndex - 1)}
+                disabled={selectedIndex === 0}
+                style={{ opacity: selectedIndex === 0 ? 0.5 : 1 }}
+              >
+                prev
+              </button>
+              <button className="next"
+                onClick={() => setSelectedIndex(selectedIndex + 1)}
+                disabled={selectedIndex === images.length - 1}
+                style={{
+                  opacity: selectedIndex === images.length - 1 ? 0.5 : 1,
+                }}
+              >
+                next
+              </button>
+            </div>
           </div>
 
           <div
