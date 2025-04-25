@@ -60,10 +60,8 @@ export default function ImageModal({
             <div className="option-buttons">
               <button className="close" onClick={onClose}>x</button>
               <a className="download" href={src} download target="_blank" rel="noopener noreferrer">
-                download
               </a>
               <a className="open-tab" href={src} target="_blank" rel="noopener noreferrer">
-                open
               </a>
 
               <button className="prev"
@@ -71,7 +69,6 @@ export default function ImageModal({
                 disabled={selectedIndex === 0}
                 style={{ opacity: selectedIndex === 0 ? 0.5 : 1 }}
               >
-                prev
               </button>
               <button className="next"
                 onClick={() => setSelectedIndex(selectedIndex + 1)}
@@ -80,7 +77,6 @@ export default function ImageModal({
                   opacity: selectedIndex === images.length - 1 ? 0.5 : 1,
                 }}
               >
-                next
               </button>
             </div>
           </div>
