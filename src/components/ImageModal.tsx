@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 type ImageModalProps = {
@@ -18,6 +18,7 @@ export default function ImageModal({
   setSelectedIndex,
 }: ImageModalProps) {
   const src = images[selectedIndex];
+  const thumbnailsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -30,6 +31,20 @@ export default function ImageModal({
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [selectedIndex, images.length, onClose, setSelectedIndex]);
+
+  useEffect(() => {
+    if (thumbnailsRef.current) {
+      const thumbnails = thumbnailsRef.current.querySelectorAll("img");
+      const activeThumbnail = thumbnails[selectedIndex];
+      if (activeThumbnail) {
+        activeThumbnail.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+      }
+    }
+  }, [selectedIndex]);
 
   return (
     <AnimatePresence>
@@ -86,11 +101,14 @@ export default function ImageModal({
 
           <div
             className="modal-thumbnails"
+            ref={thumbnailsRef}
             style={{
               display: "flex",
-              gap: "0.5rem",
+              gap: "0.1rem",
               marginTop: "1rem",
               overflowX: "auto",
+              scrollBehavior: "smooth",
+              scrollSnapType: "x mandatory",
             }}
           >
             {images.map((thumb, idx) => (
