@@ -47,37 +47,40 @@ export default function ImageModal({
           exit={{ scale: 0.9 }}
           onClick={(e) => e.stopPropagation()}
         >
-          <Image
-            className="modal-image"
-            src={src}
-            alt="Expanded"
-            width={900}
-            height={600}
-            style={{ objectFit: "contain", borderRadius: "8px" }}
-          />
-
+          <div className="image-wrapper">
+            <Image fill src={src} alt="Expanded" className="modal-image" />
+          </div>
           <div className="modal-buttons">
             <div className="option-buttons">
               <button className="close" onClick={onClose}></button>
-              <a className="download" href={src} download target="_blank" rel="noopener noreferrer">
-              </a>
-              <a className="open-tab" href={src} target="_blank" rel="noopener noreferrer">
-              </a>
+              <a
+                className="download"
+                href={src}
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+              ></a>
+              <a
+                className="open-tab"
+                href={src}
+                target="_blank"
+                rel="noopener noreferrer"
+              ></a>
 
-              <button className="prev"
+              <button
+                className="prev"
                 onClick={() => setSelectedIndex(selectedIndex - 1)}
                 disabled={selectedIndex === 0}
                 style={{ opacity: selectedIndex === 0 ? 0.5 : 1 }}
-              >
-              </button>
-              <button className="next"
+              ></button>
+              <button
+                className="next"
                 onClick={() => setSelectedIndex(selectedIndex + 1)}
                 disabled={selectedIndex === images.length - 1}
                 style={{
                   opacity: selectedIndex === images.length - 1 ? 0.5 : 1,
                 }}
-              >
-              </button>
+              ></button>
             </div>
           </div>
 
@@ -101,8 +104,6 @@ export default function ImageModal({
                 style={{
                   cursor: "pointer",
                   opacity: idx === selectedIndex ? 1 : 0.5,
-                  border:
-                    idx === selectedIndex ? "2px solid #000" : "1px solid #ccc",
                   borderRadius: "6px",
                   flexShrink: 0,
                 }}
