@@ -48,7 +48,7 @@ body {
 
 .modal-content {
   background: var(--white);
-  padding: 1rem;
+  padding: 0.6rem;
   border-radius: 12px;
   max-width: 100%;
   max-height: 90%;
@@ -64,17 +64,22 @@ body {
     position: absolute;
   }
 
-  .close,
-  .download,
-  .open-tab,
-  .prev,
-  .next {
+  .close::before,
+  .download:before,
+  .open-tab:before,
+  .prev:before,
+  .next:before {
+    content: "";
+    width: 18px;
+    height: 18px;
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  .close::before {
+    background-image: url("/icons/ico_close.svg");
   }
 
   .open-tab {
@@ -82,9 +87,16 @@ body {
     top: 0;
   }
 
+  .open-tab::before {
+    background-image: url("/icons/ico_newtab.svg");
+  }
+
   .download {
     right: 0;
     top: 0;
+  }
+
+  .download::before {
     background-image: url("/icons/ico_download.svg");
   }
 
@@ -99,50 +111,92 @@ body {
   }
 
   .prev {
+    left: 0;
+  }
+
+  .next {
     right: 0;
   }
-}
 
-.modal-image {
-  max-width: 100%;
-  height: auto;
-}
+  .prev:before {
+    background-image: url("/icons/ico_next.svg");
+    transform: rotate(180deg);
+  }
 
-.modal-buttons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
+  .next::before {
+    background-image: url("/icons/ico_next.svg");
+  }
 
-.modal-buttons button,
-.modal-buttons a {
-  padding: 0.5rem 1rem;
-  background-color: #111111;
-  color: var(--white);
-  border: none;
-  border-radius: 50%;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
+  .modal-image {
+    max-width: 100%;
+    height: auto;
+  }
 
-.modal-buttons button:hover,
-.modal-buttons a:hover {
-  background-color: #444444;
-}
+  .modal-buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
 
-.modal-thumbnails {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  filter: brightness(0.5) contrast(1.25);
-}
+  .modal-buttons button {
+    padding: 0.6rem 0.7rem;
+    background-color: rgba(0, 0, 0, 0.785);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
 
-.thumbnail-img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  transition: border 0.2s ease;
+  .modal-buttons a {
+    padding: 0.6rem 0.7rem;
+    background-color: rgba(0, 0, 0, 0.785);
+    border: none;
+    border-radius: 50%;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 18px;
+    height: 18px;
+  }
+  .modal-buttons a:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .modal-buttons a:active {
+    transform: scale(0.95);
+  }
+
+  .modal-buttons a::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .modal-buttons .prev::before,
+  .modal-buttons .next::before {
+    background-image: url("/icons/ico_next.svg");
+  }
+
+  .modal-buttons .prev::before {
+    transform: rotate(180deg);
+  }
+  .modal-buttons button .modal-thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    filter: brightness(0.5) contrast(1.25);
+  }
+
+  .thumbnail-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    transition: border 0.2s ease;
+  }
 }

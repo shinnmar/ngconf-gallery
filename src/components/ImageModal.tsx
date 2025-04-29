@@ -58,7 +58,7 @@ export default function ImageModal({
 
           <div className="modal-buttons">
             <div className="option-buttons">
-              <button className="close" onClick={onClose}>x</button>
+              <button className="close" onClick={onClose}></button>
               <a className="download" href={src} download target="_blank" rel="noopener noreferrer">
               </a>
               <a className="open-tab" href={src} target="_blank" rel="noopener noreferrer">
