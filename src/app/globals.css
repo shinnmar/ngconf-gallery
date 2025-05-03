@@ -74,8 +74,8 @@ body {
     .prev:before,
     .next:before {
       content: "";
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       display: inline-block;
       background-size: cover;
       background-repeat: no-repeat;
@@ -138,7 +138,7 @@ body {
     }
 
     .modal-buttons button {
-      padding: 0.6rem 0.7rem;
+      padding: 0.7rem 0.8rem;
       background-color: rgba(0, 0, 0, 0.785);
       border: none;
       border-radius: 50%;
